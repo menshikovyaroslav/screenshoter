@@ -45,12 +45,19 @@ namespace Screenshoter
             var handle = GetConsoleWindow();
             ShowWindow(handle, SW_HIDE);
 
+            // Чтение конфигурации
             ReadSettings();
 
+            // Запуск бесконечной работы скриншотов 
             while (true)
             {
+                // Проверить хранилище
                 CheckStorage();
+
+                // Выполнить скриншот
                 DoScreen();
+
+                // Подождать интервал времени
                 Thread.Sleep(_interval * 1000);
             }
         }
